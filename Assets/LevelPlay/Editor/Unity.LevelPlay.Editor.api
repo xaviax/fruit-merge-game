@@ -1,0 +1,24 @@
+// This file is generated. Do not modify by hand.
+// XML documentation file not found. To check if public methods have XML comments,
+// make sure the XML doc file is present and located next to the scraped dll
+[UnityEngine.HelpURL(@"https://docs.unity.com/grow/levelplay/sdk/unity/developer-tools/")] public class LevelPlayMediationNetworkSettings : UnityEngine.ScriptableObject
+{
+    [UnityEngine.SerializeField] [UnityEngine.Tooltip(@"This Will be added to your AndroidManifest.xml")] public string AdmobAndroidAppId;
+    [UnityEngine.SerializeField] [UnityEngine.Tooltip(@"This will be added to your info.plist")] public string AdmobIOSAppId;
+    [UnityEngine.Header(@"")] [UnityEngine.Header(@"AdMob Integration")] [UnityEngine.SerializeField] [UnityEngine.Tooltip(@"This will add AdMob Application ID to AndroidManifest.xml/info.plist")] public bool EnableAdmob;
+    public static readonly string MEDIATION_SETTINGS_ASSET_PATH;
+    public LevelPlayMediationNetworkSettings() {}
+}
+
+[UnityEditor.CustomEditor(typeof(LevelPlayMediationNetworkSettings))] public class LevelPlayMediationNetworkSettingsInspector : UnityEditor.Editor
+{
+    public static LevelPlayMediationNetworkSettings LevelPlayMediationNetworkSettings { get; }
+    public LevelPlayMediationNetworkSettingsInspector() {}
+}
+
+[UnityEditor.CustomEditor(typeof(LevelPlayMediationSettings))] public class LevelPlayMediationSettingsInspector : UnityEditor.Editor
+{
+    public static LevelPlayMediationSettings LevelPlayMediationSettings { get; }
+    public LevelPlayMediationSettingsInspector() {}
+    public override void OnInspectorGUI();
+}

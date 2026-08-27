@@ -1,0 +1,21 @@
+<dependencies>
+  <unityversion>5.8.0.0</unityversion>
+  <androidPackages>
+    <androidPackage spec="com.unity3d.ads-mediation:bidmachine-adapter:5.7.0">
+    </androidPackage>
+  </androidPackages>
+  <androidPackages>
+    <androidPackage spec="io.bidmachine:ads:3.7.1">
+      <repositories>
+        <repository>https://artifactory.bidmachine.io/bidmachine</repository>
+      </repositories>
+    </androidPackage>
+  </androidPackages>
+  <iosPods>
+    <iosPod name="IronSourceBidMachineAdapter" version="5.7.0.0">
+      <sources>
+        <source>https://github.com/CocoaPods/Specs</source>
+      </sources>
+    </iosPod>
+  </iosPods>
+</dependencies>

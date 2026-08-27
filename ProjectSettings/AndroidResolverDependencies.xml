@@ -1,0 +1,78 @@
+<dependencies>
+  <packages>
+    <package>androidx.constraintlayout:constraintlayout:2.1.4</package>
+    <package>androidx.legacy:legacy-support-v4:1.0.0</package>
+    <package>androidx.lifecycle:lifecycle-process:2.6.2</package>
+    <package>androidx.recyclerview:recyclerview:1.2.1</package>
+    <package>com.android.installreferrer:installreferrer:2.1</package>
+    <package>com.applovin:applovin-sdk:13.6.4</package>
+    <package>com.appsflyer:af-android-sdk:6.17.5</package>
+    <package>com.appsflyer:purchase-connector:2.2.0</package>
+    <package>com.appsflyer:unity-wrapper:6.17.81</package>
+    <package>com.bigossp:bigo-ads:6.0.0</package>
+    <package>com.facebook.android:audience-network-sdk:6.22.0</package>
+    <package>com.fyber:marketplace-sdk:8.4.7</package>
+    <package>com.google.android.gms:play-services-ads:25.3.0</package>
+    <package>com.google.android.gms:play-services-ads-identifier:18.1.0</package>
+    <package>com.google.android.gms:play-services-base:18.10.0</package>
+    <package>com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk:1.3.1</package>
+    <package>com.google.android.play:core-common:2.0.4</package>
+    <package>com.google.android.play:review:2.0.0</package>
+    <package>com.google.android.ump:user-messaging-platform:4.0.0</package>
+    <package>com.google.firebase:firebase-analytics:23.2.0</package>
+    <package>com.google.firebase:firebase-analytics-unity:13.15.0</package>
+    <package>com.google.firebase:firebase-app-unity:13.15.0</package>
+    <package>com.google.firebase:firebase-common:22.2.0</package>
+    <package>com.google.firebase:firebase-config:23.1.0</package>
+    <package>com.google.firebase:firebase-config-unity:13.15.0</package>
+    <package>com.google.firebase:firebase-crashlytics-ndk:20.1.0</package>
+    <package>com.google.firebase:firebase-crashlytics-unity:13.15.0</package>
+    <package>com.inmobi.monetization:inmobi-ads-kotlin:11.4.1</package>
+    <package>com.mbridge.msdk.oversea:mbridge_android_sdk:16.9.91</package>
+    <package>com.my.target:mytarget-sdk:5.51.2</package>
+    <package>com.pangle.global:pag-sdk:8.2.0.4</package>
+    <package>com.unity3d.ads:unity-ads:4.20.0</package>
+    <package>com.unity3d.ads-mediation:admob-adapter:5.13.0</package>
+    <package>com.unity3d.ads-mediation:applovin-adapter:5.9.0</package>
+    <package>com.unity3d.ads-mediation:bidmachine-adapter:5.7.0</package>
+    <package>com.unity3d.ads-mediation:bigo-adapter:5.11.0</package>
+    <package>com.unity3d.ads-mediation:facebook-adapter:5.4.0</package>
+    <package>com.unity3d.ads-mediation:fyber-adapter:5.10.0</package>
+    <package>com.unity3d.ads-mediation:inmobi-adapter:5.9.0</package>
+    <package>com.unity3d.ads-mediation:mediation-sdk:9.6.0</package>
+    <package>com.unity3d.ads-mediation:mintegral-adapter:5.18.0</package>
+    <package>com.unity3d.ads-mediation:mytarget-adapter:5.6.0</package>
+    <package>com.unity3d.ads-mediation:pangle-adapter:5.22.0</package>
+    <package>com.unity3d.ads-mediation:unityads-adapter:5.12.0</package>
+    <package>com.unity3d.ads-mediation:vungle-adapter:5.13.0</package>
+    <package>com.vungle:vungle-ads:7.7.7</package>
+    <package>io.bidmachine:ads:3.7.1</package>
+  </packages>
+  <files>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-analytics-unity/13.15.0/firebase-analytics-unity-13.15.0.aar</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-analytics-unity/13.15.0/firebase-analytics-unity-13.15.0.pom</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-app-unity/13.15.0/firebase-app-unity-13.15.0.aar</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-app-unity/13.15.0/firebase-app-unity-13.15.0.pom</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-config-unity/13.15.0/firebase-config-unity-13.15.0.aar</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-config-unity/13.15.0/firebase-config-unity-13.15.0.pom</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-crashlytics-unity/13.15.0/firebase-crashlytics-unity-13.15.0.aar</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-crashlytics-unity/13.15.0/firebase-crashlytics-unity-13.15.0.pom</file>
+  </files>
+  <settings>
+    <setting name="androidAbis" value="arm64-v8a" />
+    <setting name="bundleId" value="com.DefaultCompany.FruitMatch" />
+    <setting name="explodeAars" value="True" />
+    <setting name="gradleBuildEnabled" value="True" />
+    <setting name="gradlePropertiesTemplateEnabled" value="True" />
+    <setting name="gradleTemplateEnabled" value="True" />
+    <setting name="installAndroidPackages" value="True" />
+    <setting name="localMavenRepoDir" value="Assets/GeneratedLocalRepo" />
+    <setting name="packageDir" value="Assets/Plugins/Android" />
+    <setting name="patchAndroidManifest" value="True" />
+    <setting name="patchMainTemplateGradle" value="True" />
+    <setting name="projectExportEnabled" value="False" />
+    <setting name="useFullCustomMavenRepoPathWhenExport" value="True" />
+    <setting name="useFullCustomMavenRepoPathWhenNotExport" value="False" />
+    <setting name="useJetifier" value="True" />
+  </settings>
+</dependencies>

@@ -1,0 +1,281 @@
+#if UNITY_ANDROID
+using System;
+using UnityEngine;
+
+namespace Unity.Services.LevelPlay
+{
+    sealed class AndroidInterstitialAd : IPlatformInterstitialAd, IUnityInterstitialAdListener, IUnityLevelPlayImpressionDataListener
+    {
+        const string k_AndroidInterstitialClass = "com.ironsource.unity.androidbridge.InterstitialAd";
+        const string k_AndroidLoadAdFunction = "loadAd";
+        const string k_AndroidShowAdFunction = "showAd";
+        const string k_IsAdReadyFunction = "isAdReady";
+        const string k_IsPlacementCappedStaticFunction = "isPlacementCapped";
+        const string k_FuncGetAdId       = "getAdId";
+        const string k_FuncSetImpressionDataListener = "setImpressionDataListener";
+
+        const string k_ErrorDisposed = "Instance is disposed. Please create a new instance in order to call any method.";
+
+        public event Action<LevelPlayAdInfo> OnAdLoaded;
+        public event Action<LevelPlayAdError> OnAdLoadFailed;
+        public event Action<LevelPlayAdInfo> OnAdDisplayed;
+        public event Action<LevelPlayAdInfo> OnAdClosed;
+        public event Action<LevelPlayAdInfo> OnAdClicked;
+        public event Action<LevelPlayAdInfo, LevelPlayAdError> OnAdDisplayFailed;
+        public event Action<LevelPlayAdInfo> OnAdInfoChanged;
+        public event Action<LevelPlayImpressionData> OnAdImpressionDataReady;
+
+        AndroidJavaObject m_InterstitialJavaObject;
+        IUnityInterstitialAdListener m_InterstitialListener;
+        IUnityLevelPlayImpressionDataListener m_ImpressionDataListener;
+
+        volatile bool m_Disposed;
+        volatile bool m_IsReady;
+
+
+        public string AdUnitId { get; }
+
+        public string AdId => m_InterstitialJavaObject.Call<string>(k_FuncGetAdId);
+
+        internal AndroidInterstitialAd(string adUnitId)
+        {
+            AdUnitId = adUnitId;
+            ThreadUtil.Send(state =>
+            {
+                try
+                {
+                    if (m_InterstitialListener == null)
+                    {
+                        m_InterstitialListener = new UnityInterstitialAdListener(this);
+                    }
+
+                    if (m_ImpressionDataListener == null)
+                    {
+                        m_ImpressionDataListener = new UnityLevelPlayImpressionDataListener(this);
+                    }
+
+                    m_InterstitialJavaObject =
+                        new AndroidJavaObject(k_AndroidInterstitialClass, adUnitId, m_InterstitialListener);
+
+                    m_InterstitialJavaObject.Call(k_FuncSetImpressionDataListener, m_ImpressionDataListener);
+                }
+                catch (Exception e)
+                {
+                    LevelPlayLogger.LogException(e);
+                }
+            });
+        }
+
+        internal AndroidInterstitialAd(string adUnitId, Config config)
+        {
+            AdUnitId = adUnitId;
+            ThreadUtil.Send(state =>
+            {
+                try
+                {
+                    if (m_InterstitialListener == null)
+                    {
+                        m_InterstitialListener = new UnityInterstitialAdListener(this);
+                    }
+
+                    if (m_ImpressionDataListener == null)
+                    {
+                        m_ImpressionDataListener = new UnityLevelPlayImpressionDataListener(this);
+                    }
+
+                    m_InterstitialJavaObject =
+                        new AndroidJavaObject(k_AndroidInterstitialClass, adUnitId, config.ConfigJavaObject, m_InterstitialListener);
+
+                    m_InterstitialJavaObject.Call(k_FuncSetImpressionDataListener, m_ImpressionDataListener);
+                }
+                catch (Exception e)
+                {
+                    LevelPlayLogger.LogException(e);
+                }
+            });
+        }
+
+        public void LoadAd()
+        {
+            if (!CheckDisposedAndLogError())
+            {
+                ThreadUtil.Post(state =>
+                {
+                    try
+                    {
+                        m_InterstitialJavaObject.Call(k_AndroidLoadAdFunction);
+                    }
+                    catch (Exception e)
+                    {
+                        LevelPlayLogger.LogException(e);
+                    }
+                });
+            }
+        }
+
+        public void ShowAd(string placementName)
+        {
+            if (!CheckDisposedAndLogError())
+            {
+                ThreadUtil.Post(state =>
+                {
+                    try
+                    {
+                        m_InterstitialJavaObject.Call(k_AndroidShowAdFunction, placementName);
+                    }
+                    catch (Exception e)
+                    {
+                        LevelPlayLogger.LogException(e);
+                    }
+                });
+            }
+        }
+
+        public bool IsAdReady()
+        {
+            if (!CheckDisposedAndLogError())
+            {
+                ThreadUtil.Send(state =>
+                {
+                    try
+                    {
+                        m_IsReady = m_InterstitialJavaObject.Call<bool>(k_IsAdReadyFunction);
+                    }
+                    catch (Exception e)
+                    {
+                        LevelPlayLogger.LogException(e);
+                    }
+                });
+            }
+            return m_IsReady;
+        }
+
+        public static bool IsPlacementCapped(string placementName)
+        {
+            var isPlacementCapped = false;
+            try
+            {
+                using (var interstitialJavaClass = new AndroidJavaClass(k_AndroidInterstitialClass))
+                {
+                    isPlacementCapped = interstitialJavaClass.CallStatic<bool>(k_IsPlacementCappedStaticFunction, placementName);
+                }
+            }
+            catch (Exception e)
+            {
+                LevelPlayLogger.LogException(e);
+            }
+            return isPlacementCapped;
+        }
+
+        public void onAdLoaded(string adInfo)
+        {
+            OnAdLoaded?.Invoke(new LevelPlayAdInfo(adInfo));
+        }
+
+        public void onAdLoadFailed(string error)
+        {
+            OnAdLoadFailed?.Invoke(new LevelPlayAdError(error));
+        }
+
+        public void onAdDisplayed(string adInfo)
+        {
+            OnAdDisplayed?.Invoke(new LevelPlayAdInfo(adInfo));
+        }
+
+        public void onAdClosed(string adInfo)
+        {
+            OnAdClosed?.Invoke(new LevelPlayAdInfo(adInfo));
+        }
+
+        public void onAdDisplayFailed(string error, string adInfo)
+        {
+            OnAdDisplayFailed?.Invoke(new LevelPlayAdInfo(adInfo), new LevelPlayAdError(error));
+        }
+
+        public void onAdClicked(string adInfo)
+        {
+            OnAdClicked?.Invoke(new LevelPlayAdInfo(adInfo));
+        }
+
+        public void onAdInfoChanged(string adInfo)
+        {
+            OnAdInfoChanged?.Invoke(new LevelPlayAdInfo(adInfo));
+        }
+
+        public void onImpressionSuccess(string impressionData)
+        {
+            OnAdImpressionDataReady?.Invoke(new LevelPlayImpressionData(impressionData));
+        }
+
+        void Dispose(bool disposing)
+        {
+            if (m_Disposed) return;
+            m_Disposed = true;
+            if (disposing)
+            {
+                ThreadUtil.Post(state =>
+                {
+                    m_InterstitialJavaObject?.Call(k_FuncSetImpressionDataListener, (object)null);
+                    m_InterstitialJavaObject?.Dispose();
+                    m_IsReady = false;
+                    m_InterstitialListener = null;
+                    m_ImpressionDataListener = null;
+                    m_InterstitialJavaObject = null;
+                });
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        ~AndroidInterstitialAd()
+        {
+            Dispose(false);
+        }
+
+        bool CheckDisposedAndLogError()
+        {
+            if (m_Disposed)
+            {
+                LevelPlayLogger.LogError(k_ErrorDisposed);
+            }
+            return m_Disposed;
+        }
+
+        internal class Config : IPlatformInterstitialAd.IConfig
+        {
+            internal AndroidJavaObject ConfigJavaObject { get; }
+
+            private Config(AndroidJavaObject config)
+            {
+                ConfigJavaObject = config;
+            }
+
+            internal class Builder : IPlatformInterstitialAd.IConfigBuilder
+            {
+                private const string KBuilderClass = "com.ironsource.unity.androidbridge.InterstitialAd$ConfigBuilder";
+                private readonly AndroidJavaObject m_BuilderJavaObject;
+
+                internal Builder()
+                {
+                    m_BuilderJavaObject = new AndroidJavaObject(KBuilderClass);
+                }
+
+                public void SetBidFloor(double bidFloor)
+                {
+                    m_BuilderJavaObject.Call("setBidFloor", bidFloor);
+                }
+
+                public IPlatformInterstitialAd.IConfig Build()
+                {
+                    var androidConfig = m_BuilderJavaObject.Call<AndroidJavaObject>("build");
+                    return new Config(androidConfig);
+                }
+            }
+        }
+    }
+}
+#endif

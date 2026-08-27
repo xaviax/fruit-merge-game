@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0f9cd2bd9c750e49a72048c4d44512f, type: 3}
+  m_Name: SweetLime9
+  m_EditorClassIdentifier: Assembly-CSharp::FruitDefinition
+  tier: 9
+  displayName: SweetLime
+  sprite: {fileID: 21300000, guid: 32f771d17597640869d4411dedd8b441, type: 3}
+  visualDiameter: 1.7
+  colliderRadius: 0.85
+  mass: 1
+  mergeScore: 10

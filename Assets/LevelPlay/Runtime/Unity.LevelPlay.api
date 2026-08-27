@@ -1,0 +1,324 @@
+// This file is generated. Do not modify by hand.
+// XML documentation file not found. To check if public methods have XML comments,
+// make sure the XML doc file is present and located next to the scraped dll
+[UnityEngine.HelpURL(@"https://docs.unity.com/grow/levelplay/sdk/unity/developer-tools/")] public class LevelPlayMediationSettings : UnityEngine.ScriptableObject
+{
+    public string AndroidAppKey;
+    [UnityEngine.Header(@"Google Play Services Settings")] [UnityEngine.Tooltip(@"Add Google Play Services normal permission for API level 31 (Android 12)")] public bool DeclareAD_IDPermission;
+    [UnityEngine.Header(@"Project Features")] public bool EnableAdapterDebug;
+    public bool EnableIntegrationHelper;
+    [UnityEngine.Header(@"Automatic Initialization")] [UnityEngine.Tooltip(@"Enable this flag and enter App Keys below to automatically initialize your LevelPlay app.")] public bool EnableIronsourceSDKInitAPI;
+    public string IOSAppKey;
+    public static readonly string s_LevelPlaySettingsAssetPath;
+    public LevelPlayMediationSettings() {}
+}
+
+namespace Unity.Services.LevelPlay
+{
+    public interface ILevelPlayBannerAd : System.IDisposable
+    {
+        public event System.Action<LevelPlayAdInfo> OnAdClicked;
+        public event System.Action<LevelPlayAdInfo> OnAdCollapsed;
+        public event System.Action<LevelPlayAdInfo> OnAdDisplayed;
+        public event System.Action<LevelPlayAdInfo, LevelPlayAdError> OnAdDisplayFailed;
+        public event System.Action<LevelPlayAdInfo> OnAdExpanded;
+        public event System.Action<LevelPlayImpressionData> OnAdImpressionDataReady;
+        public event System.Action<LevelPlayAdInfo> OnAdLeftApplication;
+        public event System.Action<LevelPlayAdInfo> OnAdLoaded;
+        public event System.Action<LevelPlayAdError> OnAdLoadFailed;
+        public void DestroyAd();
+        public string GetAdId();
+        public LevelPlayAdSize GetAdSize();
+        public string GetAdUnitId();
+        public string GetPlacementName();
+        public LevelPlayBannerPosition GetPosition();
+        public void HideAd();
+        public void LoadAd();
+        public void PauseAutoRefresh();
+        public void ResumeAutoRefresh();
+        public void ShowAd();
+    }
+
+    public interface ILevelPlayInterstitialAd : System.IDisposable
+    {
+        public event System.Action<LevelPlayAdInfo> OnAdClicked;
+        public event System.Action<LevelPlayAdInfo> OnAdClosed;
+        public event System.Action<LevelPlayAdInfo> OnAdDisplayed;
+        public event System.Action<LevelPlayAdInfo, LevelPlayAdError> OnAdDisplayFailed;
+        public event System.Action<LevelPlayImpressionData> OnAdImpressionDataReady;
+        public event System.Action<LevelPlayAdInfo> OnAdInfoChanged;
+        public event System.Action<LevelPlayAdInfo> OnAdLoaded;
+        public event System.Action<LevelPlayAdError> OnAdLoadFailed;
+        public string AdUnitId { get; }
+        public void DestroyAd();
+        public string GetAdId();
+        public bool IsAdReady();
+        public void LoadAd();
+        public void ShowAd(string placementName = default(string));
+    }
+
+    public interface ILevelPlayRewardedAd : System.IDisposable
+    {
+        public event System.Action<LevelPlayAdInfo> OnAdClicked;
+        public event System.Action<LevelPlayAdInfo> OnAdClosed;
+        public event System.Action<LevelPlayAdInfo> OnAdDisplayed;
+        public event System.Action<LevelPlayAdInfo, LevelPlayAdError> OnAdDisplayFailed;
+        public event System.Action<LevelPlayImpressionData> OnAdImpressionDataReady;
+        public event System.Action<LevelPlayAdInfo> OnAdInfoChanged;
+        public event System.Action<LevelPlayAdInfo> OnAdLoaded;
+        public event System.Action<LevelPlayAdError> OnAdLoadFailed;
+        public event System.Action<LevelPlayAdInfo, LevelPlayReward> OnAdRewarded;
+        public string AdUnitId { get; }
+        public void DestroyAd();
+        public string GetAdId();
+        public LevelPlayReward GetReward(string placement);
+        public bool IsAdReady();
+        public void LoadAd();
+        public void ShowAd(string placementName = default(string));
+    }
+
+    public class LevelPlay
+    {
+        public static string PluginVersion = @"9.5.0-r";
+        [System.Obsolete(@"Use OnAdImpressionDataReady on each ad instance (LevelPlayBannerAd, LevelPlayInterstitialAd, LevelPlayRewardedAd) instead.")] public static event System.Action<LevelPlayImpressionData> OnImpressionDataReady;
+        public static event System.Action<LevelPlayInitError> OnInitFailed;
+        public static event System.Action<LevelPlayConfiguration> OnInitSuccess;
+        public static string UnityVersion { get; }
+        public LevelPlay() {}
+        public static void Init(string appKey, string userId = default(string));
+        public static void LaunchTestSuite();
+        public static void SetAdaptersDebug(bool enabled);
+        [System.Obsolete(@"Use LevelPlayPrivacySettings.SetGDPRConsent() for GDPR consent management.", false)] public static void SetConsent(bool consent);
+        public static bool SetDynamicUserId(string dynamicUserId);
+        public static void SetMetaData(string key, string value);
+        public static void SetMetaData(string key, params string[] values);
+        public static void SetNetworkData(string networkKey, string networkData);
+        public static void SetPauseGame(bool pause);
+        public static void SetSegment(LevelPlaySegment segment);
+        public static void ValidateIntegration();
+    }
+
+    public sealed class LevelPlayAdError
+    {
+        public string AdId { get; }
+        public string AdUnitId { get; }
+        public int ErrorCode { get; }
+        public string ErrorMessage { get; }
+        public override string ToString();
+    }
+
+    public sealed class LevelPlayAdInfo
+    {
+        public readonly string Ab;
+        public readonly string AdFormat;
+        public readonly string AdId;
+        public readonly string AdNetwork;
+        [JetBrains.Annotations.CanBeNull] public readonly LevelPlayAdSize AdSize;
+        public readonly string AdUnitId;
+        public readonly string AdUnitName;
+        public readonly string AuctionId;
+        public readonly string Country;
+        public readonly string CreativeId;
+        public readonly string EncryptedCPM;
+        public readonly string InstanceId;
+        public readonly string InstanceName;
+        public readonly string PlacementName;
+        public readonly string Precision;
+        public readonly System.Nullable<double> Revenue;
+        public readonly string SegmentName;
+        public override string ToString();
+    }
+
+    public sealed class LevelPlayAdSize
+    {
+        public static LevelPlayAdSize BANNER;
+        public static LevelPlayAdSize LARGE;
+        public static LevelPlayAdSize LEADERBOARD;
+        public static LevelPlayAdSize MEDIUM_RECTANGLE;
+        public string Description { get; }
+        public int Height { get; }
+        public int Width { get; }
+        public static LevelPlayAdSize CreateAdaptiveAdSize(int customWidth = -1);
+        public static LevelPlayAdSize CreateCustomBannerSize(int width, int height);
+        public override string ToString();
+    }
+
+    public sealed class LevelPlayBannerAd : ILevelPlayBannerAd, System.IDisposable
+    {
+        public event System.Action<LevelPlayAdInfo> OnAdClicked;
+        public event System.Action<LevelPlayAdInfo> OnAdCollapsed;
+        public event System.Action<LevelPlayAdInfo> OnAdDisplayed;
+        public event System.Action<LevelPlayAdInfo, LevelPlayAdError> OnAdDisplayFailed;
+        public event System.Action<LevelPlayAdInfo> OnAdExpanded;
+        public event System.Action<LevelPlayImpressionData> OnAdImpressionDataReady;
+        public event System.Action<LevelPlayAdInfo> OnAdLeftApplication;
+        public event System.Action<LevelPlayAdInfo> OnAdLoaded;
+        public event System.Action<LevelPlayAdError> OnAdLoadFailed;
+        public LevelPlayBannerAd(string adUnitId, LevelPlayBannerAd.Config config = default(LevelPlayBannerAd.Config)) {}
+        public void DestroyAd();
+        public void Dispose();
+        public string GetAdId();
+        public LevelPlayAdSize GetAdSize();
+        public string GetAdUnitId();
+        public string GetPlacementName();
+        public LevelPlayBannerPosition GetPosition();
+        public void HideAd();
+        public void LoadAd();
+        public void PauseAutoRefresh();
+        public void ResumeAutoRefresh();
+        public void ShowAd();
+        public class Config
+        {
+            public class Builder
+            {
+                public Builder() {}
+                public LevelPlayBannerAd.Config Build();
+                public LevelPlayBannerAd.Config.Builder SetBidFloor(double bidFloor);
+                public LevelPlayBannerAd.Config.Builder SetDisplayOnLoad(bool displayOnLoad);
+                public LevelPlayBannerAd.Config.Builder SetPlacementName(string placementName);
+                public LevelPlayBannerAd.Config.Builder SetPosition(LevelPlayBannerPosition position);
+                public LevelPlayBannerAd.Config.Builder SetRespectSafeArea(bool respectSafeArea);
+                public LevelPlayBannerAd.Config.Builder SetSize(LevelPlayAdSize size);
+            }
+        }
+    }
+
+    public sealed class LevelPlayBannerPosition
+    {
+        public static readonly LevelPlayBannerPosition BottomCenter;
+        public static readonly LevelPlayBannerPosition BottomLeft;
+        public static readonly LevelPlayBannerPosition BottomRight;
+        public static readonly LevelPlayBannerPosition Center;
+        public static readonly LevelPlayBannerPosition CenterLeft;
+        public static readonly LevelPlayBannerPosition CenterRight;
+        public readonly string Description;
+        public static readonly LevelPlayBannerPosition TopCenter;
+        public static readonly LevelPlayBannerPosition TopLeft;
+        public static readonly LevelPlayBannerPosition TopRight;
+        public LevelPlayBannerPosition(UnityEngine.Vector2 position) {}
+        public override string ToString();
+    }
+
+    public sealed class LevelPlayConfiguration
+    {
+        public bool IsAdQualityEnabled { get; }
+    }
+
+    public sealed class LevelPlayImpressionData
+    {
+        public string Ab { get; }
+        public string AdFormat { get; }
+        public string AdNetwork { get; }
+        public string AllData { get; }
+        public string AuctionId { get; }
+        public System.Nullable<int> ConversionValue { get; }
+        public string Country { get; }
+        public string CreativeId { get; }
+        public string EncryptedCpm { get; }
+        public string InstanceId { get; }
+        public string InstanceName { get; }
+        public string MediationAdUnitId { get; }
+        public string MediationAdUnitName { get; }
+        public string Placement { get; }
+        public string Precision { get; }
+        public System.Nullable<double> Revenue { get; }
+        public string SegmentName { get; }
+        public override string ToString();
+    }
+
+    public sealed class LevelPlayInitError
+    {
+        public int ErrorCode { get; }
+        public string ErrorMessage { get; }
+        public override string ToString();
+    }
+
+    public sealed class LevelPlayInterstitialAd : ILevelPlayInterstitialAd, System.IDisposable
+    {
+        public event System.Action<LevelPlayAdInfo> OnAdClicked;
+        public event System.Action<LevelPlayAdInfo> OnAdClosed;
+        public event System.Action<LevelPlayAdInfo> OnAdDisplayed;
+        public event System.Action<LevelPlayAdInfo, LevelPlayAdError> OnAdDisplayFailed;
+        public event System.Action<LevelPlayImpressionData> OnAdImpressionDataReady;
+        public event System.Action<LevelPlayAdInfo> OnAdInfoChanged;
+        public event System.Action<LevelPlayAdInfo> OnAdLoaded;
+        public event System.Action<LevelPlayAdError> OnAdLoadFailed;
+        public string AdUnitId { get; }
+        public LevelPlayInterstitialAd(string adUnitId, LevelPlayInterstitialAd.Config config = default(LevelPlayInterstitialAd.Config)) {}
+        public void DestroyAd();
+        public void Dispose();
+        public string GetAdId();
+        public bool IsAdReady();
+        public static bool IsPlacementCapped(string placementName);
+        public void LoadAd();
+        public void ShowAd(string placementName = default(string));
+        public class Config
+        {
+            public class Builder
+            {
+                public Builder() {}
+                public LevelPlayInterstitialAd.Config Build();
+                public LevelPlayInterstitialAd.Config.Builder SetBidFloor(double bidFloor);
+            }
+        }
+    }
+
+    public static class LevelPlayPrivacySettings
+    {
+        public static void SetCCPA(bool value);
+        public static void SetCOPPA(bool value);
+        public static void SetGDPRConsent(bool consent);
+        [System.Obsolete(@"Use LevelPlayPrivacySettings.SetGDPRConsent() instead.", false)] public static void SetGDPRConsents(System.Collections.Generic.Dictionary<string, bool> networkConsents);
+    }
+
+    public sealed class LevelPlayReward
+    {
+        public int Amount { get; }
+        public string Name { get; }
+    }
+
+    public sealed class LevelPlayRewardedAd : ILevelPlayRewardedAd, System.IDisposable
+    {
+        public event System.Action<LevelPlayAdInfo> OnAdClicked;
+        public event System.Action<LevelPlayAdInfo> OnAdClosed;
+        public event System.Action<LevelPlayAdInfo> OnAdDisplayed;
+        public event System.Action<LevelPlayAdInfo, LevelPlayAdError> OnAdDisplayFailed;
+        public event System.Action<LevelPlayImpressionData> OnAdImpressionDataReady;
+        public event System.Action<LevelPlayAdInfo> OnAdInfoChanged;
+        public event System.Action<LevelPlayAdInfo> OnAdLoaded;
+        public event System.Action<LevelPlayAdError> OnAdLoadFailed;
+        public event System.Action<LevelPlayAdInfo, LevelPlayReward> OnAdRewarded;
+        public string AdUnitId { get; }
+        public LevelPlayRewardedAd(string adUnitId, LevelPlayRewardedAd.Config config = default(LevelPlayRewardedAd.Config)) {}
+        public void DestroyAd();
+        public void Dispose();
+        public string GetAdId();
+        public LevelPlayReward GetReward(string placement = default(string));
+        public bool IsAdReady();
+        public static bool IsPlacementCapped(string placementName);
+        public void LoadAd();
+        public void ShowAd(string placementName = default(string));
+        public class Config
+        {
+            public class Builder
+            {
+                public Builder() {}
+                public LevelPlayRewardedAd.Config Build();
+                public LevelPlayRewardedAd.Config.Builder SetBidFloor(double bidFloor);
+            }
+        }
+    }
+
+    public sealed class LevelPlaySegment
+    {
+        public readonly System.Collections.Generic.Dictionary<string, string> CustomData;
+        public double IapTotal;
+        public int IsPaying;
+        public int Level;
+        public string SegmentName;
+        public long UserCreationDate;
+        public LevelPlaySegment() {}
+        public System.Collections.Generic.Dictionary<string, string> GetSegmentAsDictionary();
+        public void SetCustom(string key, string value);
+    }
+}

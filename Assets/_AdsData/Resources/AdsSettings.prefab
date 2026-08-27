@@ -1,0 +1,132 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4793610313196095077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4957522979032844219}
+  - component: {fileID: -3307145311708011296}
+  m_Layer: 0
+  m_Name: AdsSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4957522979032844219
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4793610313196095077}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-3307145311708011296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4793610313196095077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfb7de02cf29d4130876e782485adcb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deviceSettings:
+    platform: 1
+    androidSettings:
+    - os: 7
+      deviceHardware:
+        threshold_SystemMemory: 2048
+        onLowMemorySettings:
+          lowEndDevice: 1
+          limitAds: 0
+        threshold_GraphicsMemory: 512
+        onlowGraphicsMemorySettings:
+          lowEndDevice: 0
+          limitAds: 1
+        threshold_BatteryLevel: 10
+        onLowBatterySettings:
+          lowEndDevice: 0
+          limitAds: 1
+    - os: 0
+      deviceHardware:
+        threshold_SystemMemory: 1024
+        onLowMemorySettings:
+          lowEndDevice: 0
+          limitAds: 1
+        threshold_GraphicsMemory: 256
+        onlowGraphicsMemorySettings:
+          lowEndDevice: 0
+          limitAds: 1
+        threshold_BatteryLevel: 20
+        onLowBatterySettings:
+          lowEndDevice: 0
+          limitAds: 1
+    iosSettings: []
+    allDevicesSettings:
+      AdDelay: 30
+      firstAppOpenAdSession: 2
+      showAppOpenAfterEveryAd: 0
+      banner: 1
+      adaptiveBanner: 1
+      native: 1
+      staticAd: 1
+      interstitialAd: 1
+      RewardedAd: 1
+      RewardedInterstitialAd: 1
+      ApplovinAppOpenAd: 1
+      AdmobAppOpenAd: 1
+    lowEndDeviceSettings:
+      AdDelay: 30
+      firstAppOpenAdSession: 2
+      showAppOpenAfterEveryAd: 0
+      banner: 1
+      adaptiveBanner: 1
+      native: 1
+      staticAd: 1
+      interstitialAd: 1
+      RewardedAd: 1
+      RewardedInterstitialAd: 1
+      ApplovinAppOpenAd: 1
+      AdmobAppOpenAd: 1
+    limitadsettings:
+      AdDelay: 30
+      firstAppOpenAdSession: 4
+      showAppOpenAfterEveryAd: 0
+      banner: 1
+      adaptiveBanner: 1
+      native: 1
+      staticAd: 1
+      interstitialAd: 1
+      RewardedAd: 1
+      RewardedInterstitialAd: 1
+      ApplovinAppOpenAd: 1
+      AdmobAppOpenAd: 1
+    lowMemorySettings:
+      AdDelay: 30
+      firstAppOpenAdSession: 2
+      showAppOpenAfterEveryAd: 0
+      banner: 1
+      adaptiveBanner: 1
+      native: 1
+      staticAd: 1
+      interstitialAd: 1
+      RewardedAd: 1
+      RewardedInterstitialAd: 1
+      ApplovinAppOpenAd: 1
+      AdmobAppOpenAd: 1
+  lowEndDevices:
+    Devices: []

@@ -1,0 +1,21 @@
+<dependencies>
+  <unityversion>5.36.0.0</unityversion>
+  <androidPackages>
+    <androidPackage spec="com.unity3d.ads-mediation:pangle-adapter:5.22.0">
+    </androidPackage>
+  </androidPackages>
+  <androidPackages>
+    <androidPackage spec="com.pangle.global:pag-sdk:8.2.0.4">
+      <repositories>
+        <repository>https://artifact.bytedance.com/repository/pangle/</repository>
+      </repositories>
+    </androidPackage>
+  </androidPackages>
+  <iosPods>
+    <iosPod name="IronSourcePangleAdapter" version="5.33.0.0">
+      <sources>
+        <source>https://github.com/CocoaPods/Specs</source>
+      </sources>
+    </iosPod>
+  </iosPods>
+</dependencies>

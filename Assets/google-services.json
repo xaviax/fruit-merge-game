@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "712650109015",
+    "project_id": "monster-vehicle-level",
+    "storage_bucket": "monster-vehicle-level.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:712650109015:android:05915a5087f50444ddb312",
+        "android_client_info": {
+          "package_name": "com.ftf.level.satisfying.brainrot.wash.repairing.asmr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "712650109015-ndtb1fvpk6qmtk9e49i8vdfvu8cqjdfa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYrprhe8U-CC96iGp2VfLtkCJUxDoJ0yk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "712650109015-ndtb1fvpk6qmtk9e49i8vdfvu8cqjdfa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
